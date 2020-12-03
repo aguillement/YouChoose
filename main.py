@@ -1,11 +1,7 @@
-from request import get_game_picture
-
-from discord.ext import commands
-
-import discord
-import os
 import random
 
+from discord.ext import commands
+from request import get_game_picture
 from settings import DISCORD_TOKEN
 
 bot = commands.Bot(command_prefix='!')
@@ -18,14 +14,9 @@ async def info(ctx):
     await ctx.send("for choosing **game** : !game *game1, game2, game3*")
     await ctx.send("for choosing **another** : !choose *word1, word2, word3*")
 
+
 """
 Choose a game.
-
-curl 'https://api.igdb.com/v4/games' 
--d 'search "rocket league"; fields screenshots.*;' 
--H 'Client-ID: ftg6d5z0xjj1u2n3i9cdbr5g1tyapu' 
--H 'Authorization: Bearer hfuah3bcm88lxtzmkgwh0ksjxsm4f7' 
--H 'Accept: application/json'
 """
 @bot.command()
 async def game(ctx, *args):
