@@ -19,6 +19,7 @@ def get_game_picture(game_name):
     response = requests.post('https://api.igdb.com/v4/games', headers=headers, data=data)
     
     data = json.loads(response.content)
+    
     # replace t_thumb with t_1080p
     image_url = data[0]["screenshots"][0]["url"].replace("t_thumb", "t_1080p")
 

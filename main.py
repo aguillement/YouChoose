@@ -31,11 +31,14 @@ curl 'https://api.igdb.com/v4/games'
 async def game(ctx, *args):
     games = ' '.join(args).split(',')
     #await ctx.send("{} possibilités: {}".format(len(games), ', '.join(games)))
-    game = random.choice(games)
+    game = random.choice(games).capitalize()
     await ctx.send(game)
 
-    game_picture_url = get_game_picture(game)
-    await ctx.send(game_picture_url)
+    try:
+        game_picture_url = get_game_picture(game)
+        await ctx.send(game_picture_url)
+    except IndexError:
+        await ctx.send("> Pas d'image trouvée")
 
 
 """
