@@ -1,25 +1,25 @@
 import random
 
 from discord.ext import commands
+
 from request import get_game_picture
+
 from settings import DISCORD_TOKEN
 
 bot = commands.Bot(command_prefix='!')
 
-"""
-Get Bot commands info.
-"""
 @bot.command()
 async def info(ctx):
+    """Get Bot commands info."""
+
     await ctx.send("for choosing **game** : !game *game1, game2, game3*")
     await ctx.send("for choosing **another** : !choose *word1, word2, word3*")
 
 
-"""
-Choose a game.
-"""
 @bot.command()
 async def game(ctx, *args):
+    """Choose a game."""
+
     games = ' '.join(args).split(',')
     #await ctx.send("{} possibilités: {}".format(len(games), ', '.join(games)))
     game = random.choice(games).capitalize()
@@ -32,11 +32,10 @@ async def game(ctx, *args):
         await ctx.send("> Pas d'image trouvée")
 
 
-"""
-Choose a random.
-"""
 @bot.command()
 async def choose(ctx, *args):
+    """Choose a random."""
+
     choice = ' '.join(args).split(',')
     await ctx.send(random.choice(choice))
 
