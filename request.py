@@ -2,6 +2,8 @@ import json
 
 import requests
 
+from random import randint
+
 from settings import AUTHORIZATION_IGDB, TWITCH_CLIENT_ID
 
 def get_game_picture(game_name):
@@ -24,6 +26,6 @@ def get_game_picture(game_name):
     data = json.loads(response.content)
 
     # Replace t_thumb with t_1080p, to get bigger image
-    image_url = data[0]["screenshots"][0]["url"].replace("t_thumb", "t_1080p")
+    image_url = data[0]["screenshots"][randint(0, len(data))]["url"].replace("t_thumb", "t_1080p")
 
     return "https:{}".format(image_url)
