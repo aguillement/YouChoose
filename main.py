@@ -8,6 +8,7 @@ from settings import DISCORD_TOKEN
 
 bot = commands.Bot(command_prefix='!')
 
+
 @bot.command()
 async def info(ctx):
     """Get Bot commands info."""
@@ -21,7 +22,7 @@ async def game(ctx, *args):
     """Choose a game."""
 
     games = ' '.join(args).split(',')
-    #await ctx.send("{} possibilités: {}".format(len(games), ', '.join(games)))
+    # await ctx.send("{} possibilités: {}".format(len(games), ', '.join(games)))
     game = random.choice(games).capitalize()
     await ctx.send(game)
 
