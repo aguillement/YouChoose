@@ -1,7 +1,10 @@
 import json
+from random import randint
+
 import requests
 
 from settings import AUTHORIZATION_IGDB, TWITCH_CLIENT_ID
+
 
 def get_game_picture(game_name):
     """
@@ -14,14 +17,16 @@ def get_game_picture(game_name):
         'Accept': 'application/json',
     }
 
-    data = 'search "{}"; fields screenshots.*;'.format(game_name)
+    request_query = 'search "{}"; fields screenshots.*;'.format(game_name)
 
-    response = requests.post('https://api.igdb.com/v4/games', headers=headers, data=data)
-    
+    response = requests.post('https://api.igdb.com/v4/games',
+                             headers=headers,
+                             data=request_query)
+
     data = json.loads(response.content)
-    
-    # replace t_thumb with t_1080p
-    image_url = data[0]["screenshots"][0]["url"].replace("t_thumb", "t_1080p")
+
+    # Replace t_thumb with t_1080p, to get bigger image
+    image_url = data[0]["screenshots"][randint(0, len(data))]["url"]
+    image_url.replace("t_thumb", "t_1080p")
 
     return "https:{}".format(image_url)
-
