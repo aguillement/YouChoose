@@ -1,12 +1,12 @@
-name: Linter
-
-on: pull_request
-
+name: Flake8 your PR
+on: [pull_request]
 jobs:
-  linter:
-    name: linter
+  flake8-your-pr:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Run flake8 on your PR - with annotations!
-        uses: tayfun/flake8-your-pr@1.0.1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - uses: valentijnscholten/flake8-your-pr@master
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
