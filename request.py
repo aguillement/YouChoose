@@ -14,10 +14,9 @@ def get_game_picture(game_name):
         'Accept': 'application/json',
     }
 
-    data = 'search "{}"; fields screenshots.*;'.format(game_name)
+    request_query = 'search "{}"; fields screenshots.*;'.format(game_name)
 
-    response = requests.post('https://api.igdb.com/v4/games', headers=headers, data=data)
-    
+    response = requests.post('https://api.igdb.com/v4/games', headers=headers, data=request_query)
     data = json.loads(response.content)
     
     # replace t_thumb with t_1080p
