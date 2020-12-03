@@ -1,10 +1,12 @@
-from discord.ext import commands
+from request import get_game_picture
 
+from discord.ext import commands
 
 import discord
 import os
 import random
-import requests
+
+from settings import DISCORD_TOKEN
 
 bot = commands.Bot(command_prefix='!')
 
@@ -18,15 +20,22 @@ async def info(ctx):
 
 """
 Choose a game.
+
+curl 'https://api.igdb.com/v4/games' 
+-d 'search "rocket league"; fields screenshots.*;' 
+-H 'Client-ID: ftg6d5z0xjj1u2n3i9cdbr5g1tyapu' 
+-H 'Authorization: Bearer hfuah3bcm88lxtzmkgwh0ksjxsm4f7' 
+-H 'Accept: application/json'
 """
 @bot.command()
 async def game(ctx, *args):
     games = ' '.join(args).split(',')
     #await ctx.send("{} possibilités: {}".format(len(games), ', '.join(games)))
-    #await ctx.send(random.choice(games))
-
     game = random.choice(games)
-    # TODO CALL API LIKE : get_game_picture(game)
+    await ctx.send(game)
+
+    game_picture_url = get_game_picture(game)
+    await ctx.send(game_picture_url)
 
 
 """
@@ -37,4 +46,4 @@ async def choose(ctx, *args):
     choice = ' '.join(args).split(',')
     await ctx.send(random.choice(choice))
 
-bot.run(os.getenv("DISCORD_TOKEN"))
+bot.run(DISCORD_TOKEN)
