@@ -18,3 +18,5 @@ Puis, `cd YouChoose`
 Installation des dépendances : `pip install -r requirements.txt`
 
 Le projet est prêt !
+
+Github actions pour le déploiement.
