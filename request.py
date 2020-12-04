@@ -27,6 +27,6 @@ def get_game_picture(game_name):
 
     # Replace t_thumb with t_1080p, to get bigger image
     image_url = data[0]["screenshots"][randint(0, len(data))]["url"]
-    image_url.replace("t_thumb", "t_1080p")
+    image_url = image_url.replace("t_thumb", "t_1080p")
 
     return "https:{}".format(image_url)
