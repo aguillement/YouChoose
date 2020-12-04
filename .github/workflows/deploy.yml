@@ -32,7 +32,8 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        envs: AUTHORIZATION_IGDB, DISCORD_TOKEN, TWITCH_CLIENT_ID
+        envs: AUTHORIZATION_IGDB,DISCORD_TOKEN,TWITCH_CLIENT_ID
         script: |
+         $AUTHORIZATION_IGDB
          /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
          /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py
