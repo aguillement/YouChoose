@@ -24,6 +24,7 @@ jobs:
 
     - name: Pip install and python main.py
       uses: appleboy/ssh-action@master
+      timeout-minutes: 1 # Times out after 1 minute
       env:
        AUTHORIZATION_IGDB: ${{ secrets.AUTHORIZATION_IGDB }}
        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
@@ -35,7 +36,6 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        timeout-minutes: 1 # Times out after 1 minute
         envs: AUTHORIZATION_IGDB,DISCORD_TOKEN,TWITCH_CLIENT_ID
         script: |
          export AUTHORIZATION_IGDB=$AUTHORIZATION_IGDB
