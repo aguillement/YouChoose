@@ -34,6 +34,9 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         envs: AUTHORIZATION_IGDB,DISCORD_TOKEN,TWITCH_CLIENT_ID
         script: |
+         export AUTHORIZATION_IGDB=${{ secrets.AUTHORIZATION_IGDB }}
+         export DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}
+         export TWITCH_CLIENT_ID=${{ secrets.TWITCH_CLIENT_ID }}
          env
          /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
          /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py
