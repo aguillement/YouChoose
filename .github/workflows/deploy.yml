@@ -40,4 +40,4 @@ jobs:
          export DISCORD_TOKEN=$DISCORD_TOKEN
          export TWITCH_CLIENT_ID=$TWITCH_CLIENT_ID
          /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
-         /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py
+         supervisorctl restart youchoose
