@@ -1,5 +1,7 @@
 # YouChoose
 
+![Deploy](https://github.com/adrienguillement/YouChoose/workflows/Deploy/badge.svg) ![Linter](https://github.com/adrienguillement/YouChoose/workflows/Linter/badge.svg)
+
 Use [**discord.py**](https://discordpy.readthedocs.io/en/latest/)
 
 
