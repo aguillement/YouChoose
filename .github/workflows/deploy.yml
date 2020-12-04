@@ -28,4 +28,6 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: ls
+        script: |
+         /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
+         /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py
