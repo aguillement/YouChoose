@@ -41,4 +41,4 @@ jobs:
          export TWITCH_CLIENT_ID=$TWITCH_CLIENT_ID
          /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install --upgrade pip
          /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
-         systemctl reload supervisord
+         systemctl restart supervisord
