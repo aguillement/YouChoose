@@ -1,6 +1,9 @@
 name: Deploy
 
-on: [push]
+on:
+ push:
+  branches: 
+   - main
 
 jobs:
  build:
@@ -21,7 +24,7 @@ jobs:
         source: "."
         target: "/srv/youchoose/YouChoose"
 
-    - name: Executing remote command
+    - name: Pip install and python main.py
       uses: appleboy/ssh-action@master
       env:
        AUTHORIZATION_IGDB: ${{ secrets.AUTHORIZATION_IGDB }}
@@ -38,6 +41,5 @@ jobs:
          export AUTHORIZATION_IGDB=$AUTHORIZATION_IGDB
          export DISCORD_TOKEN=$DISCORD_TOKEN
          export TWITCH_CLIENT_ID=$TWITCH_CLIENT_ID
-         env
          /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
          /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py
