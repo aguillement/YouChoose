@@ -5,6 +5,7 @@ on: [pull_request]
 jobs:
   styles:
     runs-on: self-hosted
+    container: python:3.8-alpine
     name: Linting
     steps:
       - uses: actions/checkout@master
