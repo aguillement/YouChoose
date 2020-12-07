@@ -8,9 +8,8 @@ jobs:
     container: python:3.8-alpine
     name: Linting
     steps:
-      - uses: actions/checkout@master
-      - name: Python Linter
-        uses: sunnysid3up/python-linter@master
+      - uses: actions/checkout@v1
+      - uses: sunnysid3up/python-linter@master
         with:
           source: "/srv/youchoose/YouChoose"
           id: run-linting
