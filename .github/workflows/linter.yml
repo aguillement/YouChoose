@@ -8,9 +8,11 @@ jobs:
     name: Linting
     steps:
       - uses: actions/checkout@master
-      - name: Run Action Step
-        id: run-linting
-        uses: LakshitF/pylint3-action@master
+      - name: Python Linter
+        uses: sunnysid3up/python-linter@master
+        with:
+          source: "/srv/youchoose/YouChoose"
+          id: run-linting
       - uses: github-actions-up-and-running/pr-comment@v1.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
