@@ -19,4 +19,4 @@ Installation des dépendances : `pip install -r requirements.txt`
 
 Le projet est prêt !
 
-Github actions pour le déploiement.
+Github actions pour le déploiement et 'linter'.
