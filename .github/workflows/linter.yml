@@ -7,7 +7,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v1
-      - uses: ricardochaves/python-lint@v1.3.0
+      - name: GitHub Action for pylint
+        uses: cclauss/GitHub-Action-for-pylint@master
+        with:
+          args: pylint --help
         id: run-linting
       - uses: github-actions-up-and-running/pr-comment@v1.0.0
         with:
