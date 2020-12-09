@@ -24,6 +24,17 @@ jobs:
 
     - name: Pip install and python main.py
       uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSHKEY }}
+        script: |
+         /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install --upgrade pip
+         /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
+
+    - name: Run
+      uses: appleboy/ssh-action@master
       env:
        AUTHORIZATION_IGDB: ${{ secrets.AUTHORIZATION_IGDB }}
        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
@@ -40,7 +51,5 @@ jobs:
          export AUTHORIZATION_IGDB=$AUTHORIZATION_IGDB
          export DISCORD_TOKEN=$DISCORD_TOKEN
          export TWITCH_CLIENT_ID=$TWITCH_CLIENT_ID
-         /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install --upgrade pip
-         /srv/youchoose/venv-youchoose/bin/python3.8 -m pip install -r /srv/youchoose/YouChoose/requirements.txt
          pkill -f /srv/youchoose/YouChoose/main.py
          nohup /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py > /dev/null 2>&1 &
