@@ -15,5 +15,5 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
-          message: 'Example of message !'
+          message: 'pylint OK'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
