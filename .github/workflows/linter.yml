@@ -12,7 +12,8 @@ jobs:
         with:
           args: pylint --help
         id: run-linting
-      - uses: github-actions-up-and-running/pr-comment@v1.0.0
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          message: Test
+          message: 'Example of message !'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
