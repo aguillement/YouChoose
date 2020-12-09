@@ -5,12 +5,15 @@ on: [pull_request]
 jobs:
   styles:
     runs-on: self-hosted
-    name: Linting
     steps:
-      - uses: actions/checkout@master
-      - uses: ricardochaves/python-lint@v1.3.0
-        id: run-linting
-      - uses: github-actions-up-and-running/pr-comment@v1.0.0
+      - uses: actions/checkout@v1
+      - name: GitHub Action for pylint
+        uses: cclauss/GitHub-Action-for-pylint@master
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          message: ${{ steps.run-linting.outputs.* }}
+          args: pylint --help
+        id: run-linting
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: 'pylint OK'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
