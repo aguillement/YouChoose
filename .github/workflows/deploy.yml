@@ -51,5 +51,4 @@ jobs:
          export AUTHORIZATION_IGDB=$AUTHORIZATION_IGDB
          export DISCORD_TOKEN=$DISCORD_TOKEN
          export TWITCH_CLIENT_ID=$TWITCH_CLIENT_ID
-         pkill -f /srv/youchoose/YouChoose/main.py || echo "Process was not running."
          nohup /srv/youchoose/venv-youchoose/bin/python3.8 /srv/youchoose/YouChoose/main.py > /dev/null 2>&1 &
